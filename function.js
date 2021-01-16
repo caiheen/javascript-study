@@ -1,65 +1,24 @@
-// 함수란 
+// 평균 구하는 함수 
 
-// 함수 선언식
+// 5개 
 
-function test(){
-    console.log("Hello");
+// ex)
+function getLevel(a, b, c, d, e){
+    const total = a + b + c + d + e;
+    const average = total / 5;
+
+    if(average >= 90){
+        return "A";
+    } else if(average >= 80 && average < 90){
+        return "B";
+    } else if(average >= 70 && average < 80){
+        return "C";
+    } else if (average >= 60 && average < 70){
+        return "D";
+    } else {
+        return "E";
+    }
+    
 }
 
-// 함수 표현식
-// es5 표현식
-
-const main = function(){
-    console.log("World");
-};
-
-// es6
-
-const main2 = () => {
-    console.log("main2");
-}
-
-// main2();
-
-// 변수
-
-// 함수
-
-// 함수실행
-
-// 덧셈,뺄셈, 나눗셈,곱셈
-
-function add(a, b){
-    console.log(a + b);
-}
-
-add(3, 4);
-
-// 빼기
-function test01(a, b){
-    console.log(a - b);
-}
-
-test01(6, 5);
-
-// 곱하기
-function test02(a, b){
-    console.log(a * b);
-}
-
-test02(3, 5);
-
-// 나누기
-function test03(a=1, b=1){
-    console.log(a / b);
-}
-
-test03();
-
-// 나머지 
-function test04(a=1, b=1){
-    return a % b;
-}
-
-const a = test04();
-console.log(a);
+console.log(getLevel(20,60,40,19,10));
