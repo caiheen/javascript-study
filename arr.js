@@ -1,8 +1,7 @@
 // // 배열 ( Array )
 
-const arr = [1, 2, 3, 4, 5];
+const arr = [1,2,3,4,5];
 
-for(let i = 0; i < arr.length; i++){
-    console.log(arr[i]);
-}
+const arr2 = arr.slice(1, 4);
 
+console.log(arr2);
