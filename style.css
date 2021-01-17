@@ -1,0 +1,31 @@
+* {margin: 0; padding: 0; box-sizing: border-box;}
+body { display: flex; justify-content: center; align-items: center; height: 100vh; background: #c1d5e0;}
+
+.watch { width: 350px; height: 350px; border-radius: 50%;
+        background: #c1d5e0; box-shadow: inset 5px 5px 9px #b2c4ce, inset -5px -5px 9px #d0e6f2;
+        display: flex; justify-content: center; align-items: center;}
+.watch:after { content: ""; position: absolute; width: 10px; height: 10px; 
+                background: #222; border-radius: 50%; z-index: 9999;}
+.hours, .mins, .sec { position: absolute;}
+.hours, .hours-pin { width: 160px; height: 160px;}
+.mins, .mins-pin { width: 190px; height: 190px;}
+.sec, .sec-pin { width: 230px; height: 230px;}
+.hours-pin, .mins-pin, .sec-pin { display: flex; justify-content: center; position: absolute;
+        border-radius: 50%;}
+.hours-pin:after { content: ""; position: absolute; width: 6px; height: 80px; border-radius: 6px 6px 0 0;
+    background: #102027;}
+.mins-pin:after {
+    content: ""; 
+    position: absolute; 
+    width: 4px; 
+    height: 100px; 
+    border-radius: 6px 6px 0 0;
+    background: #ff1744;
+    z-index: 10;
+}
+.sec-pin:after {
+    content: ""; 
+    position: absolute; 
+    width: 2px; height: 110px; border-radius: 6px 6px 0 0;
+    background: #fff;
+}
