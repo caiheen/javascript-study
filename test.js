@@ -6,7 +6,7 @@ for(let i = 1; i <= line; i++){
         star += "*";
     }
     star += "\n";
-
+ 
 }
 
 console.log(star);
