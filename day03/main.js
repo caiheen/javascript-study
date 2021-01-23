@@ -1,18 +1,28 @@
-const open = document.querySelector(".open")
-const wrap = document.querySelector(".wrap")
-const overlay = document.querySelector(".overlay")
-const modalComtent = document.querySelector(".modal-content")
-const close = document.querySelector(".close")
+const btns = document.querySelectorAll(".btns");
+const contents = document.querySelectorAll('.content');
 
-function openModal(){
-    wrap.classList.add('open-modal');
-}
-function closeModal(){
-    wrap.classList.remove('open-modal');
-}
-// Event Listener 
-open.addEventListener('click', openModal);
-close.addEventListener('click', closeModal);
-overlay.addEventListener('click', closeModal);
 
-// 오늘 하루 안보기
+function tab(index){
+    btns.forEach(function(item, i){
+        if(i != index){
+            item.classList.remove('active');
+        } else {
+            item.classList.add('active');
+        }
+    });
+
+    contents.forEach(function(item, i){
+        if(i != index){
+            item.classList.remove('active');
+        } else {
+            item.classList.add('active');
+        }
+    })
+}
+
+btns.forEach(function(item, index){
+    item.addEventListener('click', function(){
+        tab(index);
+    })
+})
+

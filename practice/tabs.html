@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .tab{
+            width: 800px;
+            height: 500px;
+            background-color: #eee;
+        }
+        .btn-wrap {
+            width: 100%;
+            height: 60px;
+        }
+        .btn-wrap .btn { 
+            width: 200px;
+            height: 100%;
+            background-color: transparent;
+            border: none;
+        }
+        .btn-wrap .btn.active {
+            color: #fff;
+            background-color: palevioletred;
+        }
+        .contents .cont {
+            display: none;
+        }
+
+        .cont.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="tab">
+        <div class="btn-wrap">
+            <button class="btn active">btn01</button>
+            <button class="btn">btn02</button>
+            <button class="btn">btn03</button>
+        </div>
+        <div class="contents">
+            <div class="cont active">1</div>
+            <div class="cont">2</div>
+            <div class="cont">3</div>
+        </div>
+    </div>
+
+    <script>
+        const btn = document.querySelectorAll(".btn");
+        const cont = document.querySelectorAll(".cont");
+
+        function tab(index){
+            btn.forEach(function(item, i){
+                if(i !== index){
+                    item.classList.remove("active");
+                } else {
+                    item.classList.add("active");
+                }
+            });
+
+            cont.forEach(function(item, i){
+                if(i !== index){
+                    item.classList.remove("active");
+                } else {
+                    item.classList.add("active");
+                }
+            });
+        }
+
+        btn.forEach(function(item, index){
+            item.addEventListener("click", function(){
+                tab(index);
+            })
+        });
+    </script>
+</body>
+</html>
