@@ -10,3 +10,5 @@ for(let i = line; i >= 1; i--){
     star += "\n";
 }
 console.log(star);
+
+
