@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body { 
+            background-color: rosybrown;
+            height: 5000px;
+        }
+        .wrap {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+        .wrap.modal-open {
+            display: block;
+        }
+        .overlay {
+            background-color: rgba(0,0,0,0.5);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+        .modal-content {
+            width: 500px;
+            height: 500px;
+            background-color: royalblue;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+    </style>
+</head>
+<body>
+    <button class="open">모달 열기</button>
+    <div class="wrap">
+        <div class="overlay"></div>
+        <div class="modal-content">
+            <button class="close">모달 닫기</button>
+        </div>
+    </div>
+
+    <script>
+        const wrap = document.querySelector(".wrap");
+        const open = document.querySelector(".open");
+        const close = document.querySelector(".close");
+        const overlay = document.querySelector(".overlay");
+    
+        function openmodal(){
+            wrap.classList.add("modal-open");
+        }
+
+        function closemodal(){
+            wrap.classList.remove("modal-open");
+        }
+        open.addEventListener('click', openmodal);
+        close.addEventListener('click',closemodal);
+        overlay.addEventListener('click', closemodal);
+    </script>
+</body>
+</html>
