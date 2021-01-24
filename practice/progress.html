@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            height: 5000px;
+        }
+        #header { 
+            width: 100%;
+            background-color: pink;
+            position: fixed;
+            top: 0;
+        }
+        #header a {
+            display: inline-block;
+            padding: 20px;
+            text-decoration: none;
+            color: #282828;
+        }
+        .progress-wrap {
+            height: 10px;
+            background-color: #eee;
+        }
+        .progress-bar {
+            width: 0;
+            height: 100%;
+            background-color: #282828;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <div class="nav">
+            <a href="#">01</a>
+            <a href="#">02</a>
+            <a href="#">03</a>
+        </div>
+        <div class="progress-wrap">
+            <div class="progress-bar"></div>
+        </div>
+    </div>
+    <script>
+        const bar = document.querySelector(".progress-bar");
+
+        const progress = () => {
+            let windowHeight = document.documentElement.scrollTop || document.body.scrollTop;
+            let scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+            let progresspercent = (windowHeight/scrollHeight) * 100;
+            bar.style.width = `${progresspercent}%`;
+        }
+        window.addEventListener('scroll', progress);
+    </script>
+</body>
+</html>

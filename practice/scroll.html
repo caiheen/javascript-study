@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scroll</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        height: 5000px;
+    }
+    #header { 
+        background-color: violet;
+        width: 100%;
+        position: fixed;
+        top: -60px;
+        transition: 0.5s;
+    }
+    #header a {
+        display: inline-block;
+        padding: 20px;
+        text-decoration: none;
+        color: #fff;
+    }
+</style>
+<body>
+    <div id="header">
+        <a href="#">Nav01</a>
+        <a href="#">Nav02</a>
+        <a href="#">Nav03</a>
+    </div>
+    <script>
+        const header = document.querySelector("#header");
+
+        const scrollHeader = () => {
+            if(document.documentElement.scrollTop > 20 || document.body.scrollTop > 20){
+                header.style.top = "0";
+            } else {
+                header.style.top = "-60px";
+            }
+        }
+
+        window.addEventListener('scroll', scrollHeader);
+    </script>
+</body>
+</html>

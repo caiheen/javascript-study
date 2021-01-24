@@ -11,84 +11,69 @@
             padding: 0;
         }
 
-        
-        .accordion {
-            all: unset;
-            background: slategray;
-            color: #fff;
-            cursor: pointer;
+        body {
+            height: 5000px;
+        }
+        .header {
+            position: fixed;
+            top: 0;
             width: 100%;
-            height: 60px;
-            text-align: left;
-            padding: 0 20px;
-            transition: 0.5s;
         }
-
-        .accordion.active {
-            background: #555;
-        }
-
-        .accordion:after {
-            content: '\002B';
-            font-size: 14px;
-            color: #fff;
-            float: right;
-            margin-right: 40px
-        }
-
-        .content {
+        #navbar {
+            background: #666;
+            
+            height: auto;
             width: 100%;
-            height: 0;
-            overflow: hidden;
-            transition: 0.5s;
+            transition: top 0.5s;
+        }
+
+        #navbar a {
+            display: inline-block;
+            color: #fff;
+            text-decoration: none;
+            text-align: center;
+            padding: 15px;
+        }
+
+        #navbar a:hover {
+            background: #aaa;
+            color: #222;
+        }
+
+        .progress-wrap {
+            width: 100%;
+            height: 8px;
             background: #ddd;
         }
-
-        .content.active {
-            height: 150px;
+        
+        .progress-bar {
+            height: 100%;
+            background: slategray;
+            width: 0;
         }
     </style>
 </head>
 <body>
-    <button class="accordion">Notice</button>
-    <div class="content">
-        <p>Lorem, ipsum dolor.</p>
-    </div> 
-    <button class="accordion">Board</button>
-    <div class="content">
-        <p>Lorem, ipsum dolor.</p>
-    </div> 
-    <button class="accordion">Text</button>
-    <div class="content">
-        <p>Lorem, ipsum dolor.</p>
-    </div> 
+    <div class="header">
+        <div id="navbar">
+            <a href="#home">Home</a>
+            <a href="#news">News</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="progress-wrap">
+            <div class="progress-bar"></div>
+        </div>
+    </div>
 
     <script>
-        const accordion = document.querySelectorAll('.accordion');
-        const contents = document.querySelectorAll('.content');
-        const open = index => {
-            accordion.forEach((item, i) => {
-                if(index === i){
-                    item.classList.toggle('active');
-                } else {
-                    item.classList.remove('active');
-                }
-            });
-
-            contents.forEach((content, i) => {
-                if(index === i){
-                    content.classList.toggle('active');
-                } else {
-                    content.classList.remove('active');
-                }
-            })
+        const bar = document.querySelector('.progress-bar');
+        const progress = () => {
+            let windowScroll = document.documentElement.scrollTop || document.body.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrollPercent = (windowScroll/height) * 100;
+            bar.style.width = `${scrollPercent}%`;
         }
-
-        accordion.forEach((item, index) => {
-            item.addEventListener('click', () => {
-                open(index);
-            });
-        });
+        window.addEventListener('scroll', progress)
     </script>
 </body>
 </html>
