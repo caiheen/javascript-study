@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordion</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        
+        .accordion {
+            all: unset;
+            background: slategray;
+            color: #fff;
+            cursor: pointer;
+            width: 100%;
+            height: 60px;
+            text-align: left;
+            padding: 0 20px;
+            transition: 0.5s;
+        }
+
+        .accordion.active {
+            background: #555;
+        }
+
+        .accordion:after {
+            content: '\002B';
+            font-size: 14px;
+            color: #fff;
+            float: right;
+            margin-right: 40px
+        }
+
+        .content {
+            width: 100%;
+            height: 0;
+            overflow: hidden;
+            transition: 0.5s;
+            background: #ddd;
+        }
+
+        .content.active {
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <button class="accordion">Notice</button>
+    <div class="content">
+        <p>Lorem, ipsum dolor.</p>
+    </div> 
+    <button class="accordion">Board</button>
+    <div class="content">
+        <p>Lorem, ipsum dolor.</p>
+    </div> 
+    <button class="accordion">Text</button>
+    <div class="content">
+        <p>Lorem, ipsum dolor.</p>
+    </div> 
+
+    <script>
+        const accordion = document.querySelectorAll('.accordion');
+        const contents = document.querySelectorAll('.content');
+        const open = index => {
+            accordion.forEach((item, i) => {
+                if(index === i){
+                    item.classList.toggle('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+
+            contents.forEach((content, i) => {
+                if(index === i){
+                    content.classList.toggle('active');
+                } else {
+                    content.classList.remove('active');
+                }
+            })
+        }
+
+        accordion.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                open(index);
+            });
+        });
+    </script>
+</body>
+</html>

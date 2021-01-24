@@ -158,86 +158,85 @@
         const reset = document.querySelector('.reset');
         const display = document.querySelector('.display');
 
-        let total = 0;
-        let start = true; 
-        let nextOperation = "";
+        let total = 0; // 총 계산된 값
+        let start = true; // 계산의 시작을 나타내는 변수
+        let nextOperation = ""; // 다음 연산자를 저장하는 변수
 
-        // setResult 
-        function setResults(val){
-            display.textContent = val.substr(0, 11);
+        function setResults(value){ // 화면에 숫자를 보여줌
+            display.textContent = value.substr(0,11);
         }
 
-        // resetDisplay
-
-        function resetDisplay(){
+        function resetDisplay(){ // 화면의 숫자를 0으로 초기화, 계산을 시작상태로 변경
             start = true;
             display.textContent = "0";
         }
 
-        // clear
-
-        function clear(){
+        function clear(){ // 연산자를 공백으로 초기화, 계산결과 0으로 초기화, resetDisplay 실행
             nextOperation = "";
             total = 0;
             resetDisplay();
         }
 
+        // calculate
+
+        function calculate(number){ // 받아온 number를 연산자에 따라 total에 계산
+            switch(nextOperation){
+                case "+":
+                    total += number;
+                    break;
+                case "-":
+                    total -= number;
+                    break;
+                case "x":
+                    total *= number;
+                    break;
+                case "/":
+                    total /= number;
+                    break;
+                default:
+                    total = number; // 25
+                    break;
+            }
+        }
+
+
         // calc
-        function calc(n){
+        function calc(number){ // 화면에서 숫자를 추출해온다.
             let val = display.textContent;
-            val = start ? n + "" : val + n;
+            val = start ? number + "" : val + number; // 3항연산자 조건이 true면 앞쪽 코드가 실행, false 뒷쪽 코드가 실행
             start = val === "0";
             setResults(val);
         }
 
         // operation
         function operation(operator){
-            const n = parseInt(display.textContent); // 문자를 숫자로 변경
-            calculate(n);
-            nextOperation = operator;
-            setResults(total + "");
-            if(total === Infinity){
+            const number = parseInt(display.textContent); // 문자를 숫자로 변경
+            calculate(number); // switch case에 전달해준다. 
+            nextOperation = operator; // oprator를 담아주는 변수
+            setResults(total + ""); // 화면에 계산결과 표시
+            if(total === Infinity){ // 잘못된 계산 Error 처리
                 console.log("err");
                 return -1;
             }
-            start = true;
+            start = true; // 계산을 시작상태로 변경
         }
 
-        // calculate
-        function calculate(n){
-            switch(nextOperation){
-                case "+":
-                    total += n;
-                    break;
-                case "-":
-                    total -= n;
-                    break;
-                case "x":
-                    total *= n;
-                    break;
-                case "/":
-                    total /= n;
-                    break;
-                default:
-                    total = n;
-                    break;
-            }
-        }
+       
+      reset.addEventListener('click', clear);
+      
+      num.forEach(number => {
+          number.addEventListener('click', event => {
+              const value = event.target.textContent;
+              calc(value);
+          });
+      });
 
-        reset.addEventListener('click', clear);
-        num.forEach(number => {
-            number.addEventListener('click', event => {
-                const value = event.target.textContent;
-                calc(value);
-            });
-        });
-
-        oper.forEach(operator => {
-            operator.addEventListener('click', event => {
-                const value = event.target.textContent;
-                operation(value);
-            });
-        });
+      oper.forEach(operator => {
+          operator.addEventListener('click', event => {
+              const value = event.target.textContent;
+              operation(value);
+          });
+      });
         
     </script>
   </body>

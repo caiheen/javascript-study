@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabs02</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .btns-wrap {
+            width: 800px;
+            height: 60px;
+            display: flex;
+            background-color: #eee;
+        }
+        .btns-wrap .btn {
+            display: block;
+            width: 33.333333%;
+            height: 100%;
+            border: none;
+            cursor: pointer;
+        }
+        .btns-wrap .btn.active {
+            background-color: #282828;
+            color: #fff;
+        }
+        .content-wrap {
+            width: 800px;
+            height: 500px;
+        }
+
+        .content-wrap .content {
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            display: none;
+        }
+        .content-wrap .content.active {
+            display: flex;
+        }
+        .content-wrap .content:first-child {
+            background-color: red;
+        }
+        .content-wrap .content:nth-child(2) {
+            background-color: blue;
+        }
+        .content-wrap .content:last-child {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="btns-wrap">
+        <button class="btn active">btn01</button>
+        <button class="btn">btn02</button>
+        <button class="btn">btn03</button>
+    </div>
+    <div class="content-wrap">
+        <div class="content active">red</div>
+        <div class="content">blue</div>
+        <div class="content">yellow</div>
+    </div>
+    <script>
+        const btn = document.querySelectorAll(".btn");
+        const content = document.querySelectorAll(".content");
+
+        function tab(index){
+            btn.forEach(function(item, i){
+                if(i !== index){
+                    item.classList.remove("active");
+                } else {
+                    item.classList.add("active");
+                }
+            });
+            
+            content.forEach(function(item, i){
+                if(i !== index){
+                    item.classList.remove("active");
+                } else {
+                    item.classList.add("active");
+                }
+            });
+        }
+
+        btn.forEach(function(item, index){
+            item.addEventListener("click", function(){
+                tab(index);
+            });
+        });
+    </script>
+</body>
+</html>

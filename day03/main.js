@@ -24,5 +24,5 @@ btns.forEach(function(item, index){
     item.addEventListener('click', function(){
         tab(index);
     })
-})
+});
 

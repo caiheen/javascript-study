@@ -50,21 +50,42 @@
     </div>
 
     <script>
-        const wrap = document.querySelector(".wrap");
         const open = document.querySelector(".open");
-        const close = document.querySelector(".close");
+        const wrap = document.querySelector(".wrap");
         const overlay = document.querySelector(".overlay");
-    
-        function openmodal(){
+        const close = document.querySelector(".close");
+
+        function openModal(){
             wrap.classList.add("modal-open");
         }
 
-        function closemodal(){
+        function closeModal(){
             wrap.classList.remove("modal-open");
         }
-        open.addEventListener('click', openmodal);
-        close.addEventListener('click',closemodal);
-        overlay.addEventListener('click', closemodal);
+
+        open.addEventListener("click", openModal);
+        close.addEventListener("click", closeModal);
+        overlay.addEventListener("click", closeModal);
+        
+
+
+
+
+        // const wrap = document.querySelector(".wrap");
+        // const open = document.querySelector(".open");
+        // const close = document.querySelector(".close");
+        // const overlay = document.querySelector(".overlay");
+    
+        // function openmodal(){
+        //     wrap.classList.add("modal-open");
+        // }
+
+        // function closemodal(){
+        //     wrap.classList.remove("modal-open");
+        // }
+        // open.addEventListener('click', openmodal);
+        // close.addEventListener('click',closemodal);
+        // overlay.addEventListener('click', closemodal);
     </script>
 </body>
 </html>
