@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #videos {
+            min-width: 100%;
+            min-height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <video src="free.mp4" autoplay muted loop id = "videos"></video>
+
+    <script>
+        const video = document.querySelector("#videos");
+
+
+
+        video.addEventListener("mouseover", () => {
+            video.pause();
+        });
+        video.addEventListener("mouseout", () => {
+            video.play();
+        });
+    </script>
+</body>
+</html>
