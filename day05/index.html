@@ -3,21 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weight Convert</title>
+    <title>weight convert</title>
 </head>
 <body>
-   
-        <input type="text" placeholder="무게를 입력해주세요">
-    
-    <div>
-        <span class="gram"></span>
-    </div>
-    <div>
-        <span class="oz"></span>
-    </div>
-    <div>
-        <span class="pound"></span>
-    </div>
+    <form>
+        <input class="weight" type="text" placeholder="무게를 입력하세요">
+        <input class="height" type="text" placeholder="키 입력 하세요">
+        <button type="submit">계산</button>
+    </form>
+
+    <div class="bmi"></div>
+    <div class="message"></div>
+
     <script src="main.js"></script>
 </body>
 </html>
