@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI</title>
+</head>
+<body>
+    <h1>BMI 측정</h1>
+    <form>
+        <input class="height" type="text" placeholder="키를 입력하세요">
+        <input class="weight" type="text" placeholder="몸무게를 입력하세요">
+        <button type="submit">결과보기</button>
+    </form>
+    <div class="bmi"></div>
+    <div class="message"></div>
+
+    <script>
+        const form = document.querySelector("form");
+        const height = document.querySelector(".height");
+        const weight = document.querySelector(".weight");
+        const bmi = document.querySelector(".bmi");
+        const message = document.querySelector(".message");
+
+        function bmiCalculator(event){
+            event.preventDefault();
+            const heightVal = parseInt(height.value) / 100;
+            const weightVal = parseInt(weight.value);
+
+            const result = weightVal / (heightVal * heightVal);
+
+            bmi.innerHTML = result;
+
+            if(result <= 18.5){
+                message.innerHTML = "저체중입니다"
+                message.style.color = "red";
+            } else if(result > 18.5 && result <= 23) {
+                message.innerHTML = "정상체중입니다"
+                message.style.color = "green";
+            } else if(result > 23 && result <= 25){
+                message.innerHTML = "과체중입니다"
+                message.style.color = "orange";
+            } else  if(result > 25 && result <= 30){
+                message.innerHTML = "비만입니다"
+            } else if(result > 30 && result <= 35){
+                message.innerHTML = "고도비만입니다"
+            } else {
+                message.innerHTML = "초고도비만입니다"
+                message.style.color = "red";
+            }
+        }
+
+        form.addEventListener("submit",bmiCalculator);
+    </script>
+</body>
+</html>
