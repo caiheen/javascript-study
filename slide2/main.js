@@ -54,10 +54,10 @@ slide();
 next.addEventListener("click", slide);
 prev.addEventListener("click", prevSlide);
 
-function dotClickFunction(index){
-    const currentSlide = document.querySelector(".slide-item.active");
-    const currentDot = document.querySelector(".dot.active");
-    if(currentSlide){
+function dotClickFuntion(index){
+    const currentDot = document.querySelector(".slide-item.active");
+    const currentSlide = document.querySelector(".dot.active");
+    if(currentDot){
         currentDot.classList.remove("active");
         currentSlide.classList.remove("active");
 
@@ -66,8 +66,8 @@ function dotClickFunction(index){
     }
 }
 
-dotAll.forEach((item,index) => {
+dotAll.forEach((item, index) => {
     item.addEventListener('click', function(){
-        dotClickFunction(index);
-    })
-})
+        dotClickFuntion(index);
+    });
+});
