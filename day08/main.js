@@ -1,58 +1,41 @@
-class TypeWriter {
-    constructor(element, words, wait=3000){
+class TypingWriter {
+    constructor(element, arr, wait=3000){
         this.element = element;
-        this.words = JSON.parse(words);
-        this.wait = parseInt(wait);
+        this.arr = JSON.parse(arr);
+        this.wait = wait; // 받아오는 것들
+
         this.txt = "";
         this.index = 0;
         this.isDeleting = false;
     }
 
     typing(){
-        const current = this.index % this.words.length;
-        const fullTxt = this.words[current];
-
+        const current = this.index % this.arr.length;
         if(this.isDeleting){
-            this.txt = fullTxt.substring(0, this.txt.length - 1);
+            this.txt = this.arr[current].substring(0, this.txt.length - 1);
         } else {
-            this.txt = fullTxt.substring(0, this.txt.length + 1);
+            this.txt = this.arr[current].substring(0, this.txt.length + 1);
         }
 
-        this.element.innerHTML = `<span>${this.txt}</span>`;
+        this.element.innerHTML = `<span>${this.txt}</span>`
 
-        let speed = 300;
-
-        if(this.isDeleting){
-            speed /= 2;
-        }
-
-        if(this.txt === fullTxt && !this.isDeleting){
-            speed = this.wait;
+        if(this.txt === this.arr[current] && !this.isDeleting){
             this.isDeleting = true;
         } else if(this.txt === "" && this.isDeleting){
             this.isDeleting = false;
             this.index++;
-            speed = 500;
         }
-        setTimeout(() => this.typing(), speed);
-    }
-}
 
-class TpyeWriterV2 extends TypeWriter {
-    test(){
-        console.log("test");
+        setTimeout(() => this.typing(), 300); // class안에서 사용할때는 익명함수 사용
     }
 }
 
 function init(){
-    const span = document.querySelector(".type-txt");
-    const wordArray = span.getAttribute("data-words");
-    const time = span.getAttribute("data-wait");
+    const ele = document.querySelector(".type-txt");
+    const words = ele.getAttribute("data-words");
+    const object = new TypingWriter(ele, words);
 
-    const tpyingWriter = new TpyeWriterV2(span, wordArray, time);
-    console.log(tpyingWriter);
-    tpyingWriter.typing();
-    tpyingWriter.test();
+    object.typing();
 }
 
-init()
+init();
