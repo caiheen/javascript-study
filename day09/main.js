@@ -14,6 +14,7 @@ secs.innerHTML = sec < 10 ? "0"+sec : sec;
 let timer;
 
 function play(){
+    console.log(sec);
     timer = setTimeout(function(){
         sec--;
         if(sec < 0){
@@ -24,13 +25,12 @@ function play(){
             min = 59;
             hour--;
         }
-        
         hours.innerHTML = hour < 10 ? "0"+hour : hour;
         mins.innerHTML = min < 10 ? "0"+min : min;
         secs.innerHTML = sec < 10 ? "0"+sec : sec;
+
         play();
     },1000);
-
 }
 
 function pause(){
@@ -41,7 +41,6 @@ function clear(){
     hour = 0;
     min = 0;
     sec = 0;
-
     hours.innerHTML = "00";
     mins.innerHTML = "00";
     secs.innerHTML = "00";
