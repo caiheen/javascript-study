@@ -5,21 +5,24 @@ const start = document.querySelector(".start");
 const stop = document.querySelector(".stop");
 const reset = document.querySelector(".reset");
 
-let hour = 0;
-let min = 0;
-let sec = 0;
-
+let hour = prompt("시각");
+let min = prompt("분");
+let sec = prompt("초");
+hours.innerHTML = hour < 10 ? "0"+hour : hour;
+mins.innerHTML = min < 10 ? "0"+min : min;
+secs.innerHTML = sec < 10 ? "0"+sec : sec;
 let timer;
 
 function play(){
     timer = setTimeout(function(){
-        sec++;
-        if(sec > 59){
-            sec = 0;
-            min++;
+        sec--;
+        if(sec < 0){
+            sec = 59;
+            min--;
         }
-        if(min > 59){
-            hour++;
+        if(min < 0){
+            min = 59;
+            hour--;
         }
         
         hours.innerHTML = hour < 10 ? "0"+hour : hour;
