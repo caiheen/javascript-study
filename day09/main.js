@@ -1,16 +1,17 @@
-const start = document.querySelector(".start");
-const stop = document.querySelector(".stop");
-const reset = document.querySelector(".reset");
 const hours = document.querySelector(".hours");
 const mins = document.querySelector(".mins");
 const secs = document.querySelector(".sec");
+const start = document.querySelector(".start");
+const stop = document.querySelector(".stop");
+const reset = document.querySelector(".reset");
 
 let hour = 0;
 let min = 0;
 let sec = 0;
+
 let timer;
 
-function play(e){
+function play(){
     timer = setTimeout(function(){
         sec++;
         if(sec > 59){
@@ -18,16 +19,15 @@ function play(e){
             min++;
         }
         if(min > 59){
-            min = 0;
             hour++;
         }
-        // console.log(sec);
+        
         hours.innerHTML = hour < 10 ? "0"+hour : hour;
         mins.innerHTML = min < 10 ? "0"+min : min;
         secs.innerHTML = sec < 10 ? "0"+sec : sec;
         play();
+    },1000);
 
-    }, 1000);
 }
 
 function pause(){
