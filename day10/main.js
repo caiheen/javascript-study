@@ -1,30 +1,28 @@
-const temp = document.querySelector(".temp");
-const minTemp = document.querySelector(".min-temp");
-const maxTemp = document.querySelector(".max-temp");
-const des = document.querySelector(".description");
-const icon = document.querySelector(".icon");
-const city = document.querySelector(".city");
-
-async function getWeatherData(lat, lon){
-    const reponse = await fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=ae06f3ab80806ea68edd83506d0fc192&units=metric&lang=kr`)
-    const data = await reponse.json();
-    console.log(data);
-    temp.innerHTML = data.main.temp;
-    minTemp.innerHTML = data.main.temp_min;
-    maxTemp.innerHTML = data.main.temp_max;
-    des.innerHTML = data.weather[0].main;
-    icon.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
-    city.innerHTML = data.name;
+const list = document.querySelector(".list");
+const button = document.querySelector(".paging");
+let number = 1;
+async function getMovie(){
+    const reponse = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=1d21809e38135e1a123a0e36f69395e2&language=ko-KR&page=${number}`);
+    const {results} = await reponse.json();
+    results.forEach(item => {
+        const li = document.createElement("li");
+        const h2 = document.createElement("h2");
+        const p = document.createElement("p");
+        const img = document.createElement("img");
+        img.src = `https://www.themoviedb.org/t/p/w220_and_h330_face${item.poster_path}`
+        h2.innerText = item.original_title;
+        p.innerText = item.overview;
+        li.appendChild(img);
+        li.appendChild(h2);
+        li.appendChild(p);
+        list.appendChild(li);
+    })
+    console.log(results);
 }
 
-function getWeather(){
-    if(navigator.geolocation){
-        navigator.geolocation.getCurrentPosition(position => {
-            const lat = position.coords.latitude;
-            const lon = position.coords.longitude;
-            getWeatherData(lat, lon)
-        })
-    }
-}
-
-getWeather();
+getMovie();
+button.addEventListener('click', function(){
+    list.innerHTML = "";
+    number++;
+    getMovie()
+})
