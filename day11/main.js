@@ -14,7 +14,7 @@ async function getpapular(){
         img.src = `https://www.themoviedb.org/t/p/w220_and_h330_face${item.poster_path}`;
         h3.innerHTML = item.title;
         span.innerHTML = item.release_date;
-        anchor.href = `detail.html?id=${item.id}`
+        anchor.href = `detail.html?id=${item.id}&cate=movie`
         li.appendChild(anchor);
         anchor.appendChild(img);
         anchor.appendChild(h3);
@@ -39,7 +39,7 @@ async function getNowplaying(){
         img.src = `https://www.themoviedb.org/t/p/w220_and_h330_face${item.poster_path}`;
         h3.innerHTML = item.title;
         span.innerHTML = item.release_date;
-        anchor.href = `detail.html?id=${item.id}`
+        anchor.href = `detail.html?id=${item.id}&cate=movie`
         li.appendChild(anchor);
         anchor.appendChild(img);
         anchor.appendChild(h3);
@@ -63,7 +63,7 @@ async function getupcoming(){
         img.src = `https://www.themoviedb.org/t/p/w220_and_h330_face${item.poster_path}`;
         h3.innerHTML = item.title;
         span.innerHTML = item.release_date;
-        anchor.href = `detail.html?id=${item.id}`
+        anchor.href = `detail.html?id=${item.id}&cate=movie`
         li.appendChild(anchor);
         anchor.appendChild(img);
         anchor.appendChild(h3);
@@ -87,7 +87,7 @@ async function topRated(){
         h3.innerHTML = item.title;
         span.innerHTML = item.release_date;
         img.src = `https://www.themoviedb.org/t/p/w220_and_h330_face${item.poster_path}`;
-        anchor.href = `detail.html?id=${item.id}`;
+        anchor.href = `detail.html?id=${item.id}&cate=movie`;
         anchor.appendChild(img);
         anchor.appendChild(h3);
         anchor.appendChild(span);
@@ -96,3 +96,51 @@ async function topRated(){
     });
 }
 topRated();
+
+async function tvTopRated(){
+    const response = await fetch(`https://api.themoviedb.org/3/tv/top_rated?api_key=1d21809e38135e1a123a0e36f69395e2&language=en-US&page=1`);
+    const {results} = await response.json();
+    console.log(results);
+    results.forEach((item) => {
+        const li = document.createElement("li");
+        const h3 = document.createElement("h3");
+        const span = document.createElement("span");
+        const img = document.createElement("img");
+        const anchor = document.createElement("a");
+        img.src = `https://www.themoviedb.org/t/p/w220_and_h330_face${item.poster_path}`;
+        h3.innerHTML = item.name;
+        span.innerHTML = item.first_air_date;
+        anchor.href = `detail.html?id=${item.id}&cate=tv`;
+        li.classList.add("movie-card")
+        anchor.appendChild(img);
+        anchor.appendChild(h3);
+        anchor.appendChild(span);
+        li.appendChild(anchor);
+        movieList[4].appendChild(li);
+    });
+}
+tvTopRated();
+
+async function tvPopular(){
+    const response = await fetch(`https://api.themoviedb.org/3/tv/popular?api_key=1d21809e38135e1a123a0e36f69395e2&language=en-US&page=1`);
+    const {results} = await response.json();
+    console.log(results);
+    results.forEach((item) => {
+        const li = document.createElement("li");
+        const h3 = document.createElement("h3");
+        const span = document.createElement("span");
+        const img = document.createElement("img");
+        const anchor = document.createElement("a");
+        li.classList.add("movie-card");
+        h3.innerHTML = item.name;
+        img.src = `https://www.themoviedb.org/t/p/w220_and_h330_face${item.poster_path}`;
+        span.innerHTML = item.first_air_date;
+        anchor.href = `detail.html?id=${item.id}&cate=tv`;
+        anchor.appendChild(img);
+        anchor.appendChild(h3);
+        anchor.appendChild(span);
+        li.appendChild(anchor);
+        movieList[5].appendChild(li);
+    });
+}
+tvPopular();

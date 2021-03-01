@@ -5,25 +5,90 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@800&display=swap" rel="stylesheet">
     <style>
+        * {
+            font-family: 'Merriweather Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
         .movie-list {
             display: flex;
             overflow-x: scroll;
             list-style: none;
+            max-width: 1440px;
+            margin: 0 auto;
         }
-
+        .title {
+            text-align: center;
+            font-size: 25px;
+            margin: 20px 0;
+        }
         .movie-card {
             margin-right: 15px;
+            text-align: center;
+            height: 450px;
+        }
+        .movie-card a {
+            text-decoration: none;
+            color: #000;
+        }
+        .movie-card h3 {
+            margin-top: 20px;
+        }
+        .movie-card span {
+            font-size: 13px;
+            color: #282828;
         }
         .header-top {
+            width: 100%;
+            height: 80px;
+            margin: 0 auto;
+            background-color: #032541;
+            display: flex;
+            justify-content: center;
+        }
+        .header-top img {
             width: 150px;
-            margin: 10px auto;
         }
         .header-input {
             height: 100px;
             display: flex;
             justify-content: center;
             align-items: center;
+            background-color: #eee;
+        }
+        .search {
+            position: relative;
+            width: 700px;
+        }
+        .search .text {
+            width: 100%;
+            height: 40px;
+            border: none;
+            border-radius: 50px;
+            padding: 0 20px;
+        }
+        .search .text:focus,
+        .search_btn:focus {
+            outline: none;
+        }
+        .search_btn {
+            width: 20%;
+            height: 100%;
+            border: none;
+            border-radius: 50px;
+            background-color: #28bad2;
+            color: #fff;
+            position: absolute;
+            top: 0;
+            right: -40px;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+        .search_btn:hover {
+            background-color: #282828;
         }
     </style>
 
@@ -34,8 +99,10 @@
             <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" alt="">
         </div>
         <div class="header-input">
-            <input type="text">
-            <button>Search</button>
+            <form class="search" action="search.html" method="GET">
+                <input name="term" class="text" type="text">
+                <input class="search_btn" type="submit" value="Search">
+            </form>
         </div>
     </div>
     <h2 class="title">Papular</h2>
@@ -51,6 +118,14 @@
 
     </ul>
     <h2 class="title">Top rated</h2>
+    <ul class="movie-list">
+        
+    </ul>
+    <h2 class="title">TV_Top rated</h2>
+    <ul class="movie-list">
+        
+    </ul>
+    <h2 class="title">TV_papular</h2>
     <ul class="movie-list">
         
     </ul>
