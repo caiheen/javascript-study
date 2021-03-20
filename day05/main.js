@@ -5,10 +5,10 @@ const bmi = document.querySelector(".bmi");
 const message = document.querySelector('.message');
 function bmiCaculator(event){
     event.preventDefault();
-    const weightVal =parseInt(weight.value);
-    const heightVal = parseInt(height.value) / 100;
+    const weightVal = parseInt(weight.value);
+    const heightVal = parseInt(height.value);
 
-    const result = weightVal / (heightVal * heightVal);
+    const result = (heightVal * heightVal) / weightVal;
 
     bmi.innerHTML = result;
 
