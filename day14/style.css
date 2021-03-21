@@ -1,0 +1,42 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+}
+
+header, section, footer {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #eee;
+
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.show .container {
+    opacity: 1;
+}
+
+header {
+    background-color: steelblue;
+}
+
+section:nth-child(odd){
+    background-color: slateblue;
+}
+
+section:nth-child(even) {
+    background-color: teal;
+}
