@@ -1,0 +1,32 @@
+@import "_variables.scss";
+
+@mixin pointButton {
+    display: flex;
+    border: 1px solid $point;
+    width: 150px;
+    height: 50px;
+    color: #fff;
+    outline: none;
+    transition: 0.5s;
+    background: none;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin highlighting($abc) {
+    #{$abc} {
+        background: yellowgreen;
+    }
+}
+
+@mixin borderRadius($radius: 5px) {
+    border-radius: $radius;
+}
+
+@mixin anchor-point($color: #fff, $hover: yellowgreen) {
+    color: $color;
+    text-decoration: none;
+    &:hover {
+        color: $hover;
+    }
+}
