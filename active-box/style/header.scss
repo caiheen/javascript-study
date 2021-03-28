@@ -1,0 +1,22 @@
+header {
+    width: 100%;
+    height: 100px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    .inner {
+        max-width: 1170px;
+        height: 100%;
+        margin: 0 auto;
+        @include alignment($justify: space-between);  
+        border-bottom: 1px solid #4b4e62;
+    }
+    .gnb {
+        width: 40%;
+        display: flex;
+        justify-content: space-between;
+        a {
+            color: #fff;
+        }
+    }
+}
