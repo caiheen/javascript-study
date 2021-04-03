@@ -1,13 +1,12 @@
 header {
     width: 100%;
     height: 100px;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
+    transition: all 0.5s;
     .inner {
-        max-width: 1170px;
-        height: 100%;
-        margin: 0 auto;
+        @include innerwrap();
         @include alignment($justify: space-between);  
         border-bottom: 1px solid #4b4e62;
     }
@@ -18,5 +17,16 @@ header {
         a {
             color: #fff;
         }
+    }
+}
+header.fixed {
+    height: 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #313454;
+    z-index: 999;
+    .inner {
+        border: none;
     }
 }
