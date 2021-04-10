@@ -115,3 +115,10 @@ div {
     width: 100px; }
   .wrap .item2 {
     width: 500px; }
+
+.exam {
+  width: 468.76812px;
+  height: 500px;
+  background: steelblue; }
+  .exam::after {
+    content: "red"; }
