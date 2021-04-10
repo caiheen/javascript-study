@@ -16,6 +16,8 @@ body {
 }
 
 .box {
+    $wid: 100px;
+    $hei: 100px !global;
     width: 100px;
     height: 100px;
     opacity: 0;
@@ -27,11 +29,20 @@ body {
            background: $point;
        }
     }
+    @at-root .list {
+        width:  $wid;
+    }
     
     &.show {
         opacity: 1;
     }
 }
+
+
+.box2 {
+    height: $hei;
+}
+
 
 @include highlighting(".box, .test-btn");
 
@@ -55,3 +66,93 @@ h1 {
   
 
 }
+
+$color-two: red;
+.box3 {
+    $color-two: blue !default;
+    background: $color-two;
+    width: 100px;
+    height: 100px;
+}
+
+$family: "Noto sans";
+$font-roboto: "ROboto";
+$title-family: $font-roboto;
+
+@import url('https://fonts.googleapis.com/css2?family=#{$family}:wght@500&display=swap/');
+
+/* 연산 */
+$box-width: 50px;
+.box5 {
+    width: (45px + 5px) / 2; 
+
+}
+
+div::after {
+    contnet: "Hello" + World;
+    flex-flow: row + "-reverse" + " " + wrap;
+}
+
+div {
+    color: #783432 + #343434;
+    background: rgba(50,50,50,.4) + rgba(20,20,20,.4);
+}
+
+$wid3: 50px;
+$hei3: 100px;
+div {
+    @if ($wid3 < 70px and $hei3 < 50px){
+        height: 300px;
+    }
+}
+
+.default-btn {
+    width: 150px;
+    height: 50px;
+    background: steelblue;
+    outline: none;
+    border: none;
+}
+
+.red-btn {
+    @extend .default-btn;
+    background: red;
+}
+
+$max-width: 1200px;
+@function col($num: 1, $col: 12){
+    @return $max-width * ($num / $col);
+}
+$color-group: (red, steelblue, slateblue);
+
+.wrap {
+    width: $max-width;
+    background-color: #783432;
+    height: 1000px;
+
+    @for $i from 1 through 3 {
+        .item#{$i}{
+            height: 100px * $i;
+        }
+    }
+
+    @each $bg-color in $color-group {
+        $i: index($color-group, $bg-color);
+        .item#{$i}{
+            background: $bg-color;
+        }
+    }
+
+   
+    .item1 {
+        width: col();
+    }
+
+    .item2 {
+        width: col(5);
+    }
+}
+
+
+
+

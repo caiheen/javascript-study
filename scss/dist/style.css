@@ -3,6 +3,7 @@
 /* font color */
 /* 공통 백그라운드 */
 /* font color */
+@import url("https://fonts.googleapis.com/css2?family=Noto sans:wght@500&display=swap/");
 * {
   margin: 0;
   padding: 0;
@@ -33,8 +34,13 @@ body {
     border-radius: 10px; }
     .box button:hover {
       background: teal; }
+  .list {
+    width: 100px; }
   .box.show {
     opacity: 1; }
+
+.box2 {
+  height: 100px; }
 
 .box, .test-btn {
   background: yellowgreen; }
@@ -61,3 +67,51 @@ h1 {
   font-family: sans-serif;
   margin-left: 20px;
   margin-top: 10px; }
+
+.box3 {
+  background: red;
+  width: 100px;
+  height: 100px; }
+
+/* 연산 */
+.box5 {
+  width: 25px; }
+
+div::after {
+  contnet: "HelloWorld";
+  flex-flow: row-reverse wrap; }
+
+div {
+  color: #ac6866;
+  background: rgba(70, 70, 70, 0.4); }
+
+.default-btn, .red-btn {
+  width: 150px;
+  height: 50px;
+  background: steelblue;
+  outline: none;
+  border: none; }
+
+.red-btn {
+  background: red; }
+
+.wrap {
+  width: 1200px;
+  background-color: #783432;
+  height: 1000px; }
+  .wrap .item1 {
+    height: 100px; }
+  .wrap .item2 {
+    height: 200px; }
+  .wrap .item3 {
+    height: 300px; }
+  .wrap .item1 {
+    background: red; }
+  .wrap .item2 {
+    background: steelblue; }
+  .wrap .item3 {
+    background: slateblue; }
+  .wrap .item1 {
+    width: 100px; }
+  .wrap .item2 {
+    width: 500px; }
