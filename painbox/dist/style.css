@@ -20,6 +20,11 @@ a {
 
 section {
   text-align: center; }
+  section.js-fade {
+    opacity: 0;
+    transition: 0.5s; }
+    section.js-fade.on {
+      opacity: 1; }
 
 .sec02 .inner {
   max-width: 1920px;
