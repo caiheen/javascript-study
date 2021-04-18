@@ -1,14 +1,12 @@
 const scrollElements = document.querySelectorAll(".js-fade");
 
-function inView(ele, dividend = 1){
+function inView(ele, divide = 1){
     const eleTop = ele.getBoundingClientRect().top;
-    console.log(eleTop);
 
     return (
-        eleTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend // true, false
+        eleTop <= (window.innerHeight || document.documentElement.clientHeight) / divide
     )
 }
-
 function outView(ele){
     const eleTop = ele.getBoundingClientRect().top;
 
@@ -16,25 +14,22 @@ function outView(ele){
         eleTop > (window.innerHeight || document.documentElement.clientHeight)
     )
 }
-
-function displayElement(ele){
+function displayEle(ele){
     ele.classList.add("on");
 }
-
-function hideElement(ele){
+function hideEle(ele){
     ele.classList.remove("on");
 }
 
-function scrollEffectHandler(){
+function scrollEffect(){
     scrollElements.forEach(ele => {
         if(inView(ele, 1.25)){
-            displayElement(ele);
+            displayEle(ele);
         } else if(outView(ele)){
-            hideElement(ele);
+            hideEle(ele);
         }
-    })
+    });
 }
-
-window.addEventListener('scroll', () => {
-    scrollEffectHandler();
-})
+window.addEventListener("scroll", ()=> {
+    scrollEffect();
+});

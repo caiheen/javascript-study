@@ -1,0 +1,144 @@
+.carousel-wrap p {
+    margin: 0 !important;
+    line-height: 1 !important;
+    font-family: 'Noto Serif KR', serif !important;
+}
+.carousel-wrap a {
+    font-family: 'Noto Serif KR', serif !important;
+}
+.main-pro-more {
+    font-family: 'Noto Serif KR', serif;
+    color: #ec1c23 !important;
+    font-size: 20px;
+    display: block;
+}
+.car-title {
+    font-size: 50px;
+    color: #ec1c23;
+    font-weight: bold;
+}
+.car-title .en-font {
+    font-weight: 400;
+    margin: 10px 0 !important;
+}
+.car-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.car-top > div {
+    width: 50%;
+}
+.car-top .car-des p {
+    font-size: 20px;
+    line-height: 25px !important;
+}
+.car-top .car-des p:nth-child(1) {
+    font-weight: bold;
+    color: #ec1c23;
+    margin-bottom: 10px !important;
+}
+.pro-carousel {
+    position: relative;
+    width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.pro-carousel .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3200px;
+}
+.pro-carousel .wrap > div {
+    width: 30%;
+    text-align: center;
+    position: relative;
+}
+.pro-carousel .wrap > div.active {
+    width: 37%;
+}
+.pro-carousel .wrap > div img {
+    position: relative;
+    top: 80px;
+}
+.pro-carousel .wrap > div.active::after {
+    content: "";
+    display: inline-block;
+    width: 2px;
+    height: 50px;
+    background: #ec1c23;
+    position: absolute;
+    top: 68%;
+    right: 0;
+}
+.pro-carousel .wrap > div.active::before {
+    content: "";
+    display: inline-block;
+    width: 2px;
+    height: 50px;
+    background: #ec1c23;
+    position: absolute;
+    top: 68%;
+    left: 0;
+}
+.pro-carousel .wrap > div .txt-box {
+    padding: 125px 40px 40px 40px;
+    margin: 0 50px;
+    background-color: #fff;
+    border-radius: 60px;
+}
+.pro-carousel .wrap > div .txt-box a {
+    display: inline-block;
+    background-color: #ec1c23;
+    color: #fff;
+    font-size: 20px;
+    padding: 10px 40px;
+    border-radius: 60px;
+}
+.txt-box .txt-in-des {
+    font-size: 20px;
+    line-height: 25px !important;
+    margin: 40px 0 !important;
+    display: none;
+}
+
+.pro-carousel .wrap > div.active .txt-box .txt-in-des {
+    display: block;
+}
+.pro-carousel .btn > button {
+    position: absolute;
+    top: 74%;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+.pro-carousel .btn .prev {
+    left: 0;
+}
+.pro-carousel .btn .next {
+    right: 0;
+}
+.pro-car-item .en-font {
+    font-size: 23px;
+    color: #ec1c23;
+    font-weight: bold;
+}
+.txt-in-des {
+    a {
+        margin-top: 30px;
+        display: inline-block;
+    }
+}
+.car-tit-item  {
+    display: none;
+    &.active {
+        display: block;
+    }
+}
+.car-des-item {
+    display: none;
+    &.active {
+        display: block;
+    }
+}
