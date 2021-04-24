@@ -5,12 +5,12 @@ const allItem = document.querySelectorAll(".pro-car-item");
 
 /* 상단 좌측 설명 */
 const alltitItem = document.querySelectorAll(".car-tit-item");
-const fristtitItem = document.querySelectorAll(".car-tit-item:first-child");
-const lasttitITem = document.querySelectorAll(".car-tit-item:last-child");
+const fristtitItem = document.querySelector(".car-tit-item:first-child");
+const lasttitITem = document.querySelector(".car-tit-item:last-child");
 /* 상단 우측 설명 */
 const alldesItem = document.querySelectorAll(".car-des-item");
-const fristdesItem = document.querySelectorAll(".car-des-item:first-child");
-const lastdesITem = document.querySelectorAll(".car-des-item:last-child");
+const fristdesItem = document.querySelector(".car-des-item:first-child");
+const lastdesITem = document.querySelector(".car-des-item:last-child");
 
 
 
@@ -42,6 +42,7 @@ function nextTop(){
         currentDes.classList.remove("active");
         const nextTit = currentTit.nextElementSibling;
         const nextDes = currentDes.nextElementSibling;
+        console.log(nextTit)
         if(nextTit){
             nextTit.classList.add("active");
             nextDes.classList.add("active");
@@ -55,17 +56,18 @@ function nextTop(){
     }
 }
 
-let counter = 1;
-const SIZE = 400;
-wrap.style.transform = `translateX(${-SIZE * counter}px)`;
+let counter = 0;
+const SIZE = allItem[0].clientWidth;
+//wrap.style.transform = `translateX(${-SIZE * counter}px)`;
 
 next.addEventListener('click', () => {
     wrap.style.transition = "transform 0.5s ease-in-out";
     counter++;
+    console.log(counter);
     wrap.style.transform = `translateX(${-SIZE * counter}px)`;
     allItem.forEach(item => item.classList.remove("active"));
-    if(allItem[counter + 1]){
-        allItem[counter + 1].classList.add("active");
+    if(allItem[counter+1]){
+        allItem[counter+1].classList.add("active");
     }
     nextTop();
 });
@@ -74,18 +76,30 @@ prev.addEventListener("click", () => {
     wrap.style.transition = "transform 0.5s ease-in-out";
     counter--;
     wrap.style.transform = `translateX(${-SIZE * counter}px)`;
+    allItem.forEach(item => item.classList.remove("active"));
+    if(allItem[counter+1]){
+        allItem[counter+1].classList.add("active");
+    }
     prevTop();
 })
 
 wrap.addEventListener("transitionend", () => {
-    if(allItem[counter].id === "last-item"){
+    if(allItem[counter+1].id === "last-item"){
+        allItem.forEach(item => item.classList.remove("active"));
         wrap.style.transition = "none";
-        counter = allItem.length - 2;
+        counter = allItem.length - 3;
         wrap.style.transform = `translateX(${-SIZE * counter}px)`;
-    } else if(allItem[counter].id === "first-item"){
+        allItem[counter + 1].classList.add("active");
+
+    } else if(allItem[counter+1].id === "first-item"){
+        console.log(allItem.length);
+        console.log(counter)
+        allItem.forEach(item => item.classList.remove("active"));
         wrap.style.transition = "none";
-        counter = allItem.length - counter;
+        counter = allItem.length - (counter + 2);
+        console.log(counter)
         wrap.style.transform = `translateX(${-SIZE * counter}px)`;
-        allItem[counter+1].classList.add("active");
+
+        allItem[counter + 1].classList.add("active");
     }
 })
