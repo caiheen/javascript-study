@@ -12,8 +12,6 @@ const alldesItem = document.querySelectorAll(".car-des-item");
 const fristdesItem = document.querySelector(".car-des-item:first-child");
 const lastdesITem = document.querySelector(".car-des-item:last-child");
 
-
-
 function prevTop(){
     const currentTit = document.querySelector(".car-tit-item.active");
     const currentDes = document.querySelector(".car-des-item.active");
