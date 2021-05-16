@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styled from "styled-components";
-
+import Button ,{RedButton} from "./Theme";
 const StyleForm = styled.form`
     width: 500px;
     height: 300px;
@@ -14,17 +14,12 @@ const Input = styled.input`
 
 `;
 
-const BtnColor = styled.button`
-    width: 150px;
-    height: 50px;
-    border: none;
-    border-radius: 0;
+const BtnColor = styled(Button)`
     cursor: pointer;
-    opacity: ${props => props.fadeBtn};
+    opacity: ${props => props.fadeColor};
 `;
 
 function Form() {
-    const colors = ["red", "black", "blue", "pink", "yellow"];
   
     const [colorset, setColorset] = useState({
       color: "",
@@ -37,18 +32,17 @@ function Form() {
     function getColorSet(e){
       const name = e.target.name;
       const value = e.target.value;
-  
       setColorset({
-        ...colorset,
-        [name]: value
+          ...colorset,
+          [name]: value
       });
-  
+      console.log(colorset);
     }
   
     function submit(e){
       e.preventDefault();
-        setColor(colorset.color);
-        setOpacity(colorset.opacity);
+      setColor(colorset.color);
+      setOpacity(colorset.opacity);
     }
     // function colorChange(){
     //     let num = Math.floor(Math.random() * 5);
@@ -65,7 +59,8 @@ function Form() {
     
             <input type="submit" value="submit" onClick={submit}/>
         </StyleForm>
-        <BtnColor fadeBtn={opacity} >Change</BtnColor>
+        <BtnColor fadeColor={opacity}>Change</BtnColor>
+        <RedButton>Btt</RedButton>
       </>
     );
   }
